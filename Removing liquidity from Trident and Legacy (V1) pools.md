@@ -1,4 +1,3 @@
-# Interacting with Sushiswap smart contracts through blockexplorer
 
 # Removing liquidity through Trident router (example on Arbitrum):
 
