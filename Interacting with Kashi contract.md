@@ -10,12 +10,12 @@ To repay through the contract users should first deposit the asset they are goin
 
 ![Screenshot 2023-03-14 at 11.57.17.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2011.57.17.png)
 
-1. Click on “Write Contract” ([https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract](https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract))
-2. Scroll down to 13.reapy
-3. In “to (address)” put user’s address
-4. In “skim” put  false ( repaying with assets in user’s BentoBox balance)
-5. In “part” put the copied amount
-6. Click “write”
+6. Click on “Write Contract” ([https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract](https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract))
+7. Scroll down to 13.reapy
+8. In “to (address)” put user’s address
+9. In “skim” put  false ( repaying with assets in user’s BentoBox balance)
+10. In “part” put the copied amount
+11. Click “write”
 
 ![Screenshot 2023-03-14 at 16.36.58.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2012.05.45.png)
 
@@ -48,11 +48,11 @@ The transaction will withdraw the collateral to the user’s Bento balance. Afte
 
 ![Screenshot 2023-03-14 at 17.04.01.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2017.04.01.png)
 
-1. Click on “Write Contract” ([https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract](https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract))
-2. Scroll down to 11.removeAsset
-3. In “to (address)” put user’s address
-4. In “fraction” put the copied amount
-5. Click “write”
+6. Click on “Write Contract” ([https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract](https://bscscan.com/token/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#writeContract))
+7. Scroll down to 11.removeAsset
+8. In “to (address)” put user’s address
+9. In “fraction” put the copied amount
+10. Click “write”
 
 ![Screenshot 2023-03-14 at 17.15.16.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2017.15.16.png)
 
