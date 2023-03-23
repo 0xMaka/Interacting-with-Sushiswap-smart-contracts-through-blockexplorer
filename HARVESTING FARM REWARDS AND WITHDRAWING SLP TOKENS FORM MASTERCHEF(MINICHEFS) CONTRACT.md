@@ -1,7 +1,7 @@
 ****************************************HARVESTING FARM REWARDS AND WITHDRAWING SLP TOKENS FORM MASTERCHEF/MINICHEF CONTRACT (UNSTAKING FROM A FARM)****************************************
 
 - ****************************************************************Harvesting farm rewards from MasterchefV1****************************************************************  - on MasterchefV1 there is no “harvest” function, but users still can harvest their rewards buy calling “deposit” function, as this automatically harvest the rewards due to this moment.
-1. Go to MasterchefV1 address on the block explorer and click “Write Conteract” ([https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#writeContract](https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#writeContract))
+1. Go to MasterchefV1 address on the block explorer and click "Contract"->“Write Conteract” ([https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#writeContract](https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#writeContract))
 2. Connect your wallet (Connect to Web3)
     
     
@@ -26,7 +26,7 @@ And you will see the pid of the given farm
 ![Screenshot 2023-03-20 at 18.08.13.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-20%20at%2018.08.13.png)
 
 - **********************************************************************************************************************************Harvesting farm rewards from MasterchefV2 and Minichefs contracts**********************************************************************************************************************************
-1. Go to the MasterchefV2 (Minichef) address on the block explorer ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#writeContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#writeContract)) - Arbitrum example
+1. Go to the MasterchefV2 (Minichef) address on the block explorer and click "Contract"->“Write Conteract” ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#writeContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#writeContract)) - Arbitrum example
 2. Connect your wallet (Connect to Web3)
 3. Scroll to 6.harvest
 4. In “pid (uint256)” put the farm PID (pool ID)* - 12
@@ -39,7 +39,7 @@ And you will see the pid of the given farm
 ![Screenshot 2023-03-20 at 18.23.40.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-20%20at%2018.23.40.png)
 
 - **Withdrawing SLP from MasterchefV1 (unstaking from a farm)**
-1. Go to MasterchefV1 address on the block explorer and click “Read Conteract” ([https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#readContract](https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#readContract))
+1. Go to MasterchefV1 address on the block explorer and click "Contract"->“Read Conteract” ([https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#readContract](https://etherscan.io/address/0xc2EdaD668740f1aA35E4D8f227fB8E17dcA888Cd#readContract))
 2. Scroll down to 14.userInfo
 3. In “<input> (uint256)” put the pid number* - 12
 
@@ -70,7 +70,7 @@ Unlike MasterchefV1, on MasterchefV2 and Minichefs users have the option to sele
 
 NOTE! On MasterchefV2 the functions are under umbers 16 and 17 (16.withdraw, 17.withdrawAndHarvest) and on Minichefs these are under umbers 15 and 16 (15.withdraw, 16.withdrawAndHarvest)
 
-1. Go to Minichefaddress on the block explorer and click “Read Conteract” ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract))
+1. Go to Minichefaddress on the block explorer and click "Contract"->“Read Conteract” ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract))
 2. Scroll down to 12.userInfo (it is 14.userInfo for MasterchefV2)
 3. In “<input> (uint256)” put the pid number* - 17
 
