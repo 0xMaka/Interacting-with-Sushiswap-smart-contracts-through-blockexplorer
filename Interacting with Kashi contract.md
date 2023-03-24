@@ -2,7 +2,7 @@
 
 To repay through the contract users should first deposit the asset they are going to repay to BentoBox, as calling repay function through the block explorer works only when using assets in user’s Bento balance. Can call “cook” function to repay from wallet, but the cook params are way more user unfriendly to generate. After depositing assets to Bento, the users have to obtain their borrowed part (amount of asset they have borrowed), so should go to the Kashi pair they have borrowed from (bsc chain example):
 
-1. Go to the Kashi pair address on the block explorer and click “Read Contract” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
+1. Go to the Kashi pair address on the block explorer and click "Contract"->“Read Contract” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
 2. Scroll down to 24.userBorrowPart
 3. Put in the user address
 4. Click “query”
@@ -21,9 +21,9 @@ To repay through the contract users should first deposit the asset they are goin
 
 Once the loan is repaid the users can withdraw their collateral. 
 
-****************************************************************************WITHDRAWING COLLATERAL FORM KASHI PAIR****************************************************************************
+****************************************************************************WITHDRAWING COLLATERAL FROM KASHI PAIR****************************************************************************
 
-1. Go to the Kashi pair address on the block explorer and click “Read Contract” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
+1. Go to the Kashi pair address on the block explorer and click "Contract"->“Read Contract” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
 2. Scroll down to 25.userCollateralShare
 3. Put in the user address
 4. Click “query”
@@ -40,7 +40,7 @@ The transaction will withdraw the collateral to the user’s Bento balance. Afte
 
 ************************************************************************************************WITHDRAWING DEPOSIT (LENT ASSET) FROM KASHI PAIR************************************************************************************************
 
-1. Go to the Kashi pair address on the block explorer and click “Read” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
+1. Go to the Kashi pair address on the block explorer and click "Contract"->“Read Contract” ([https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract](https://bscscan.com/address/0xAfa2526F518956a1FE1fF6f3Aef9A90007a64052#readContract))
 2. Scroll down to 5.balanceOf
 3. Put in the user address
 4. Click “query”
