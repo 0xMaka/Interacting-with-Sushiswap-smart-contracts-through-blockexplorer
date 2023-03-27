@@ -7,7 +7,7 @@
 5. Click “query”
 6. Copy the shown amount.
 
-![Screenshot 2023-03-19 at 18.31.58.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-19%20at%2018.31.58.png)
+![image](https://user-images.githubusercontent.com/12489182/228032229-c975bff3-7ece-45fb-973d-eba4668d3fdf.png)
 
 1. Click on “Write Contract” ([https://polygonscan.com/address/0x0319000133d3ada02600f0875d2cf03d442c3367#writeContract](https://polygonscan.com/address/0x0319000133d3ada02600f0875d2cf03d442c3367#writeContract))
 2. Connect your wallet (Connect to Web3)
@@ -19,4 +19,5 @@
 8. In “share (uint256)” put 0
 9. Click “Write”
 
-![Screenshot 2023-03-19 at 18.31.58.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-19%20at%2018.45.19.png)
+![image](https://user-images.githubusercontent.com/12489182/228032324-741e569a-0a55-4c9e-a3a9-e350bab22456.png)
+
