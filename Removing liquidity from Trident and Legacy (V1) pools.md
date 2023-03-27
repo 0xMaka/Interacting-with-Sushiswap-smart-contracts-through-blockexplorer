@@ -1,7 +1,7 @@
 
 # Removing liquidity through Trident router (example on Arbitrum):
 
-- Before removing the liquidity through the Trident router contract the users have to approve Trident router address as a spender for their SLP tokens. As users usually have already done that when trying to remove liquidity through the UI (problems occur with the removing, not with the approval), just check user’s address to be sure the Trident router has been approved. If there is a problem with the approval itself, have to do the following:
+- Before removing the liquidity through the Trident router contract, the users have to approve Trident router address as a spender for their SLP tokens. As users usually have already done that when trying to remove liquidity through the UI (problems occur with the removing, not with the approval), just check user’s address to be sure the Trident router has been approved. If there is a problem with the approval itself, we have to do the following:
 1. Go to the pool address on the block explorer and select “Write contract” ([https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract](https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract))
 2. Connect your wallet (Connect to Web3)
 3. Click on “approve”
@@ -13,15 +13,15 @@
 1. Go to the Trident router address on the block explorer and select “Write contract” ([https://arbiscan.io/address/0xd9988b4b5bbc53a794240496cfa9bf5b1f8e0523#writeContract](https://arbiscan.io/address/0xd9988b4b5bbc53a794240496cfa9bf5b1f8e0523#writeContract))
 2. Connect your wallet (Connect to Web3) 
 3. Scroll down to 3.burnLiquidty
-4. In the first filed put 0 (it is always 0)
+4. In the first field put 0 (it is always 0)
 5. In the next put the address of the pair - 0x176542be47040929a34591367f243f83c1ee13de 
 6. Next put the amount of liquidity - 5246699295914733
 
-1. In the data put - 0x000000000000000000000000d4351aa99ed4ee99b6b100c720f981ddc154bd980000000000000000000000000000000000000000000000000000000000000000 *
+1. In the data field put - 0x000000000000000000000000d4351aa99ed4ee99b6b100c720f981ddc154bd980000000000000000000000000000000000000000000000000000000000000000 *
 2. And in minWithdrawals (tuple[]) put - [["0x61de0041bd4c2951b3274028a86daaacc2260949","2306000000000000"],["0x82af49447d8a07e3bd95bd0d56f35241523fbab1","1191000000000000"]] ** (the addresses of both tokens in that pair and the minimal amounts (in unit256) the user is willing to accept) - min amounts should be at least 0.5% less then the actual amounts.
 3. After that click "Write”
 
-* Data consist of the address (usually the user’s address) and the destination (Bento balance or wallet) where the SLP should be unwinded. Both (address and destination) consist of 64 characters, so 0s where there is no value, and add 0x at the front. So the first 64 characters (after 0x) represent the users address (but without 0x). In that case user address is 0xd4351aa99ed4ee99b6b100c720f981ddc154bd98. So we take d4351aa99ed4ee99b6b100c720f981ddc154bd98 (40 characters) and add 24 zeros to the left. Destination is determined by the last digit in the data - 0 for unwinding in BentoBox, 1 for unwinding in wallet. So we take 0 or 1 and add 63 zeros to the left. Combine both (address and destination) and add 0x to the left.
+* Data consist of the address (usually the user’s address) and the destination (Bento balance or wallet) to where the SLP should be unwound. Both (address and destination) consist of 64 characters, so 0s where there is no value, and add 0x at the front. The first 64 characters (after 0x) represent the users address (but without 0x). In this case our users address is 0xd4351aa99ed4ee99b6b100c720f981ddc154bd98. So we take d4351aa99ed4ee99b6b100c720f981ddc154bd98 (40 characters) and add 24 zeros to the left. Destination is determined by the last digit in the data - 0 for unwinding in BentoBox, 1 for unwinding to wallet. So we take 0 or 1 and add 63 zeros to the left. Combine both (address and destination) and add 0x to the left.
 
 ** First address is the address of token0 and second one is the address of token1. Can check which of tokens is token0 and which one is token1 in the pool contract on the block explorer.
 
@@ -29,9 +29,9 @@ For some tokens with broken liquidity fee mechanics withdrawing to wallet will n
 
 ![Screenshot 2023-03-13 at 15.39.40.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-18%20at%2019.42.32.png)
 
-If transaction cost shown on the wallet is too high (like 1 eth) there is some problem. User should check if there are no spaces in front/after some of the values he entered and also check if the token addresses positions correspond to the sequence - token0 address should be the first one and token1 address should be the second one. If everything is alright with the inputs, but MM still gives high transaction cost or throw some other error should simulate the transaction on Tenderly and try to figure what the exact problem is.
+If the transaction cost shown in the wallet is too high (like 1 eth) there is some problem. The user should check that there are no spaces in front/after some of the values they entered, and also check if the token addresses positions correspond to the sequence - token0 address should be the first one and token1 address should be the second one. If everything is alright with the inputs, but MM still gives high transaction cost or throw some other error, we should simulate the transaction on Tenderly and try to figure what the exact problem is.
 
-On Tenderly the inputs are almost the same, but first have to specify the contract address (Trident router) and blockchain (Arbitrum)
+On Tenderly the inputs are almost the same, but we first have to specify the contract address (Trident router) and blockchain (Arbitrum)
 
 ![Screenshot 2023-03-13 at 16.17.10.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.17.10.png)
 
@@ -40,11 +40,11 @@ Click on “or Use Fetched Contract ABI” and select “burnLiquidity” functi
 
 ![Screenshot 2023-03-13 at 16.17.44.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.17.44.png)
 
-Then just put all the data  - same as on the contract example (without the first 0), just  minWithdrawals is a bit different and have to be like this: 
+Then just put all the data  - same as on the contract example (without the first 0), just minWithdrawals is a bit different and has to be like this: 
 
 [{ "token":"0x61de0041bd4c2951b3274028a86daaacc2260949", "amount":"0" }, { "token":"0x82af49447d8a07e3bd95bd0d56f35241523fbab1", "amount":"0" }]*
 
-*  Here the min amounts are set to 0 as this is the best way to check if the problem is with slippage or it is something else. If sim is successful with 100% slippage (0 min amounts), then start playing with the numbers till find the minimum slippage that works.
+*  Here the min amounts are set to 0 as this is the best way to check if the problem is with slippage or if it is something else. If the sim is successful with 100% slippage (0 min amounts), then start playing with the numbers till find the minimum slippage that works.
 
 ![Screenshot 2023-03-13 at 16.16.17.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.16.17.png)
 
@@ -54,7 +54,7 @@ Don’t forget to put user’s address in the “From” field (on the right)
 
 Just as with Trident pools, the users have to approve V1 router address as a spender for their SLP tokens - same procedure as described above.
 
-- I**nteracting with V1 router** - on V1 router there are different functions for the different types of pools. RemoveLiquidity (for pools where none of the tokens is the chain native one), RemoveLiquidityEth (for pools where one of the tokens is the chain native one) and remove liquidtyEthSupportingFeeOnTransferTokens. In the example (on Arbitrum chain) will use removeLiquidity function, but the principle is the same and for the rest.
+- **Interacting with V1 router** - on V1 router there are different functions for the different types of pools. RemoveLiquidity (for pools where neither token is the chain's native coin), RemoveLiquidityEth (for pools where one of the tokens is the chain native coin) and remove liquidtyEthSupportingFeeOnTransferTokens. In the example (on Arbitrum chain) will use removeLiquidity function, but the principle is the same and for the rest.
 1. Go to the V1 router address on the block explorer and select “Write contract” ([https://arbiscan.io/address/0x1b02da8cb0d097eb8d57a175b88c7d8b47997506#writeContract](https://arbiscan.io/address/0x1b02da8cb0d097eb8d57a175b88c7d8b47997506#writeContract))
 2. Connect your wallet (Connect to Web3) 
 3. Scroll to 3.removeLiquidity
@@ -68,7 +68,7 @@ Just as with Trident pools, the users have to approve V1 router address as a spe
 11. Click “write”
 
 ![Screenshot 2023-03-14 at 11.30.12.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2011.30.12.png)
-* In that particular case the min amounts are set with 4% slippage as the user is the only owner of liquidity in that pool. Defining the minimum possible slippage is possible by running simulations on Tenderly - the procedure is the same as when simulating removing liquidity through Trident router. Just have to select the V1 router address and in the V1 case the input is absolutely the same as on the block explorer
+* In this particular case the min amounts are set with 4% slippage as the user is the only owner of liquidity in that pool. Defining the minimum possible slippage is possible by running simulations on Tenderly - the procedure is the same as when simulating removing liquidity through Trident router. Just have to select the V1 router address and in the V1 case the input is absolutely the same as on the block explorer
 
 ![Screenshot 2023-03-14 at 11.34.51.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2011.34.51.png)
 
