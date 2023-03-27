@@ -23,6 +23,7 @@
 
 ### **I placed a limit order, but do not see it in my open orders list** 
 - Most likely just deposited your funds to your BentoBox balance and did not complete setting the order. Please check your BentoBox balance at app.sushi.com→Portfolio→Account. If your funds are there you may complete the order by starting the process from the beginning, just this time select “BentoBox” when setting the “Pay from” option.
+![image](https://user-images.githubusercontent.com/12489182/228018880-a3c355e6-8b2d-4ad2-86cb-f75535a33944.png)
 
 ### **I made a cross-chain swap but did not receive the tokens on the destination chain** 
 - In some rare cases you may receive the assets in the form of stable coins on the destination chain. This may happen if the swap ratio (stables to “desired asset”) is not good enough to meet the minimum amount you have set on the initiating chain. So to protect you against unfavourable trade the assets will be left in stables. Can check the status of your cross-chain transaction here: [https://layerzeroscan.com/](https://layerzeroscan.com/)
