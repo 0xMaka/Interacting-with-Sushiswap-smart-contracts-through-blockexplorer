@@ -1,15 +1,31 @@
-- **************************************Withdrawing bought tokens (or committed assets) from MISO auction contract**************************************
+### **************************************Withdrawing bought tokens (or committed assets) from MISO auction contract**************************************
 
-Before withdrawing tokens/committed assets from MISO auction first have to check that the auction is “finished” and - if it was successful - “finalised”. After the auction is finished (hit the end time), the owner of the auction have to finalise it if auction was successful. If the owner does not do that, 7 days after the end of the auction anyone can finalise the auction. So make sure that the auction is finished and finalised (if successful):
+Before withdrawing purchased tokens/committed assets from MISO auction, we first have to check that the auction is “finished” and - if it was successful - “finalised”. <br>
+After the auction has finished (passed the end time), provided the auction was successful, the owner of the auction still has to finalise it. <br>
+If the owner does not do that, then 7 days after the end time anyone can finalise the auction. 
+So make sure that the auction is finished, and finalised (if successful):
 
-1. Go to the auction address on the block explorer - can find the address in the transaction with which assets were committed to the auction - and click “Contract”→”Read Contract”, for example: [https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#readContract](https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#readContract)
-2. Scroll down to 5.auctionEnded - if it says “True” the action has ended, if it says “False” the auction is still running and the user should wait till it ends.
-3. If auction is ended scroll down to 6.auctionSuccessful - if it says “True” the auction has reached the set targets and users will receive (when withdrawing) the tokens bought on the auction. If it says “false” the auction is not successful, does not need to be finalised and the users may proceed to withdraw the committed assets.
-4. If the the auction was successful scroll down to 13.finalised - if it says “True”, the users may proceed with withdrawing the bought tokens. If it says “false” scroll up to 12.finalizeTimeExpired - if it says “false” the users have to wait till the owner of the auction finalise it or till the 7 days period expires. If it says “True” the users may finalise the auction themselves. To do that click on “Write Contract” ([https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#writeContract](https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#writeContract)), connect your wallet (Connect to Web3) scroll down to 11.finalize and click “Write”.
+1. Go to the auction address on the block explorer 
+- - Can find the address in the transaction with which assets were committed to the auction - by clicking “Contract”→”Read Contract”. <br> 
+    For example: [https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#readContract](https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#readContract)
 
-![Screenshot 2023-03-20 at 23.50.40.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-20%20at%2023.50.40.png)
+2. Scroll down to 5. auctionEnded() 
+- - “True” indicates the auction has ended, 
+- - “False”, that the auction is still running and the users should wait till it ends.
 
-- ************************************Withdrawing bought tokens/committed assets************************************
+3. If auction has ended, scroll down to 6. auctionSuccessful() 
+- - “True” indicates the auction has reached the set targets, and users will receive (when withdrawing) the tokens bought at auction.
+- - “False”, that the auction is not successful, does not need to be finalised and the users may proceed to withdraw the committed assets.
+
+4. If the the auction was successful scroll down to 13. finalised() 
+- If it says “True”, the users may proceed with withdrawing the bought tokens. If it says “False” scroll up to 12.finalizeTimeExpired() - if this shows “false” the user will have to wait, either for the auction owner to finalise it, or for the 7 day period to expire. <br>
+If it says “True” the users may finalise the auction themselves. 
+To finalise an auction click on “Write Contract” ([https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#writeContract](https://etherscan.io/address/0x6629F31a192cDfc3A21FBd7753885946039AD43D#writeContract)) <br>
+Connect your wallet (Connect to Web3) scroll down to 11.finalize and click “Write”.
+
+![image](https://user-images.githubusercontent.com/12489182/228038394-27b3ff0a-e0ab-499c-bbc4-c4c4f26ec090.png)
+
+### ************************************Withdrawing bought tokens/committed assets************************************
 
 No matter if the users will withdraw tokens bought on the auction or committed assets, the procedure is the same:
 
@@ -18,4 +34,4 @@ No matter if the users will withdraw tokens bought on the auction or committed a
 3. Scroll down to 32.withdraw
 4. Click “Write”
 
-![Screenshot 2023-03-20 at 23.56.03.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-20%20at%2023.56.03.png)
+![image](https://user-images.githubusercontent.com/12489182/228038571-c53914f8-4123-450b-8d59-7bc505ac67ea.png)
