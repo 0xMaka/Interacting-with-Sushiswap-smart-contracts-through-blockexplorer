@@ -79,17 +79,18 @@ To do so we simply deposit 0 SLP token, passing the corresponding pool ID:
 
 ### Withdrawing SLP from MasterchefV2/Minichefs (unstaking from a farm)
 
-Unlike MasterchefV1, on MasterchefV2 and Minichefs users have the option to select “Withdraw and harvest” or just “Withdraw” (unstaking SLP without harvesting the farm rewards. Can be used if rewards contracts are out of the reward tokens, but the user wants to unstake anyway. Users can harvest their rewards later, when rewarder contracts are refilled). Inputs are absolutely the same for both functions - here is an Arbitrum example with calling “Withdraw” function.
+Unlike MasterchefV1, for MasterchefV2 and Minichefs users have the option to select either “Withdraw and harvest”, or just “Withdraw” (unstaking SLP without harvesting the farm rewards. This can be useful if a reward contracts is out of the reward token, and the user still needs to unstake (*Note* this is not needed for v1 as reward is minted per block and cannot run out there). 
+Where using wthdraw() without "harvest", users can harvest their rewards later, when rewarder contracts are refilled. 
+Inputs are absolutely the same for both functions - Here is an Arbitrum example with calling “Withdraw” function.
 
-*NOTE!* On MasterchefV2 the functions are under umbers 16 and 17 (16.withdraw, 17.withdrawAndHarvest) and on Minichefs these are under umbers 15 and 16 (15.withdraw, 16.withdrawAndHarvest)
+*NOTE!* With MasterchefV2 the functions are under numbers 16 and 17 respoectively (16. withdraw(), 17. withdrawAndHarvest(), while for Minichefs, these are under numbers 15 and 16 (15. withdraw(), 16. withdrawAndHarvest())
 
-1. Go to Minichefaddress on the block explorer and click "Contract"->“Read Conteract” ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract))
-2. Scroll down to 12. userInfo() (*Note*: it is 14. userInfo() for MasterchefV2)
-3. In “<input> (uint256)” put the pid number - *In this example: 17*
+1. Navigate to the Minichef address with a block explorer and click "Contract"->“Read Conteract” ([https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract](https://arbiscan.io/address/0xf4d73326c13a4fc5fd7a064217e12780e9bd62c3#readContract))
+2. Scroll down to 12. userInfo() (*Note* it is 14. userInfo() for MasterchefV2)
+3. For the first field “<input> (uint256)”, enter the pid number - *In this example 17*
+* Can see above how to obtain a farms PID
 
-* See above how to obtain PID number
-
-4. In “<input> (address)” put the user address- 0x54962fb1ba5229413777fbadd4d826319e68c065
+4. For the second “<input> (address)”, in put the user address - *In this eexample 0x54962fb1ba5229413777fbadd4d826319e68c065*
 
 5. Click “query”
 
