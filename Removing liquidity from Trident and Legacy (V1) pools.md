@@ -26,27 +26,22 @@
 ** First address is the address of token0 and second one is the address of token1. Can check which of tokens is token0 and which one is token1 in the pool contract on the block explorer.
 
 For some tokens with broken liquidity fee mechanics withdrawing to wallet will not work (if the token is paired with ETH), as it is not possible to unwind to ETH and have to receive weth, so should withdraw to user’s BentoBox balance and after that the user may withdraw the WETH to their wallet. (app.sushi.com→Portfolio→Account. The assets should be shown under “Bento” balance. Click on the asset and select “Withdraw to wallet)
-
-![Screenshot 2023-03-13 at 15.39.40.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-18%20at%2019.42.32.png)
+![image](https://user-images.githubusercontent.com/12489182/228105013-98845b12-6fc9-431e-a3af-84c22f76610b.png)
 
 If the transaction cost shown in the wallet is too high (like 1 eth) there is some problem. The user should check that there are no spaces in front/after some of the values they entered, and also check if the token addresses positions correspond to the sequence - token0 address should be the first one and token1 address should be the second one. If everything is alright with the inputs, but MM still gives high transaction cost or throw some other error, we should simulate the transaction on Tenderly and try to figure what the exact problem is.
 
 On Tenderly the inputs are almost the same, but we first have to specify the contract address (Trident router) and blockchain (Arbitrum)
-
-![Screenshot 2023-03-13 at 16.17.10.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.17.10.png)
-
+![image](https://user-images.githubusercontent.com/12489182/228180735-6ad83b30-438f-454c-8c10-92bfa89e7fd0.png)
 
 Click on “or Use Fetched Contract ABI” and select “burnLiquidity” function from the drop down menu:
-
-![Screenshot 2023-03-13 at 16.17.44.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.17.44.png)
+![image](https://user-images.githubusercontent.com/12489182/228180891-e271c0f0-642a-4c1d-8c8b-f57fb1608ad0.png)
 
 Then just put all the data  - same as on the contract example (without the first 0), just minWithdrawals is a bit different and has to be like this: 
 
 [{ "token":"0x61de0041bd4c2951b3274028a86daaacc2260949", "amount":"0" }, { "token":"0x82af49447d8a07e3bd95bd0d56f35241523fbab1", "amount":"0" }]*
 
 *  Here the min amounts are set to 0 as this is the best way to check if the problem is with slippage or if it is something else. If the sim is successful with 100% slippage (0 min amounts), then start playing with the numbers till find the minimum slippage that works.
-
-![Screenshot 2023-03-13 at 16.16.17.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-13%20at%2016.16.17.png)
+![image](https://user-images.githubusercontent.com/12489182/228180973-ba4a9500-bd19-4cf7-8b56-cf325f36328a.png)
 
 Don’t forget to put user’s address in the “From” field (on the right)
 
@@ -67,9 +62,8 @@ Just as with Trident pools, the users have to approve V1 router address as a spe
 10. In “deadline” put the end time (in unix timestamp) after which the transaction should be rejected if not executed within the set time period, can set timestamp like 5-10 mins in the future - 1678787791
 11. Click “write”
 
-![Screenshot 2023-03-14 at 11.30.12.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2011.30.12.png)
+![image](https://user-images.githubusercontent.com/12489182/228181967-93da3b63-6477-415a-b434-ac15ca3bbd16.png)
 * In this particular case the min amounts are set with 4% slippage as the user is the only owner of liquidity in that pool. Defining the minimum possible slippage is possible by running simulations on Tenderly - the procedure is the same as when simulating removing liquidity through Trident router. Just have to select the V1 router address and in the V1 case the input is absolutely the same as on the block explorer
+![image](https://user-images.githubusercontent.com/12489182/228182246-21357a0e-f4c4-42e6-b5e6-880ede755298.png)
 
-![Screenshot 2023-03-14 at 11.34.51.png](https://github.com/CarpeCryptum/pics/blob/main/Screenshot%202023-03-14%20at%2011.34.51.png)
-
-************NOTE!************ Function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used for saving assets accidentally sent directly to the v2 router contract. If user have sent token XYZ to the router contract, just add liquidity (or create a new pair if needed) to the XYZ/”native chain token” pair and after that remove the liquidity with the “remove liquidtyEthSupportingFeeOnTransferTokens” function. Usually bots are doing that too fast to be able to rescue, but if on some side chain or amount is not too big, there is a chance to save users asset.
+*NOTE!* Function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used for saving assets accidentally sent directly to the v2 router contract. If user have sent token XYZ to the router contract, just add liquidity (or create a new pair if needed) to the XYZ/”native chain token” pair and after that remove the liquidity with the “remove liquidtyEthSupportingFeeOnTransferTokens” function. Usually bots are doing that too fast to be able to rescue, but if on some side chain or amount is not too big, there is a chance to save users asset.
