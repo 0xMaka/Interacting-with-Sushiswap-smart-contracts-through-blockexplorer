@@ -67,7 +67,7 @@ Then just put all the data  - same as on the contract example (without the first
 
 Don’t forget to put user’s address in the “From” field (on the right)
 
-**********************************REMOVING LIQUIDITY FROM LEGACY POOLS THROUGH V2 ROUTER CONTRACT**********************************
+# REMOVING LIQUIDITY FROM LEGACY POOLS THROUGH V2 ROUTER CONTRACT
 
 Just as with Trident pools, the users have to approve the SushiswapV2Router address as a spender for their SLP tokens - same procedure as described above.
 
@@ -83,19 +83,19 @@ With a clone of the Uniswap V2 router, there are different functions for the dif
 
 3. Scroll to 3.removeLiquidity
 
-4. In “tokenA” put the token0 address - 0x7d28ef69bd63557ef61e96404f27cadd6c2832fd
+4. For “tokenA” put the token0 address - *0x7d28ef69bd63557ef61e96404f27cadd6c2832fd*
 
-5. In “tokenB” put token1 address - 0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9
+5. For “tokenB” put token1 address - *0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9*
 
-6. In “liquidity” put the amount of SLP owned by the user - 62245 (unit256)
+6. Under “liquidity” put the amount of SLP owned by the user - *62245* (unit256)
 
-7. In “amountAMin” put the minimum amount of token0 the user agrees to receive - 1960 (that’s 196 in unit256, as the token is with 1 decimal) *
+7. In “amountAMin” put the minimum amount of token0 the user agrees to receive - *1960* (that’s 196 in unit256, as the token is with 1 decimal) *
 
-8. In “amountBMin” put the minimum amount of token1 the user agrees to receive - 1960000 (that’s 1.96 in unit256, as the token - USDT - is with 6 decimals) *
+8. In “amountBMin” put the minimum amount of token1 the user agrees to receive - *1960000* (that’s 1.96 in unit256, as the token - USDT - is with 6 decimals) *
 
-9. In “to (address)” put the user address - 0xd1134f6e28ab3b75500378b47250d6d88e0c1bb0
+9. For “to (address)” put the user address - *0xd1134f6e28ab3b75500378b47250d6d88e0c1bb0*
 
-10. In “deadline” put the end time (in unix timestamp) after which the transaction should be rejected if not executed within the set time period, can set timestamp like 5-10 mins in the future - 1678787791
+10. Under “deadline” put the end time (in unix timestamp) after which the transaction should be rejected if not executed within the set time period, can set timestamp like 5-10 mins in the future - *1678787791*
 
 11. Click “write”
 ![image](https://user-images.githubusercontent.com/12489182/228181967-93da3b63-6477-415a-b434-ac15ca3bbd16.png)
@@ -105,8 +105,9 @@ With a clone of the Uniswap V2 router, there are different functions for the dif
 For some tokens with broken liquidity-fee mechanics, it is required to select withdrawal to wETH instead of ETH (if the token is paired with ETH), as this will bypass the call to take fees and allow transfer.
 Please note that v2 pools will need to call the tokens transfer, so is relatively easy for someone who doesn't understand their contract to perminantly lock their assets in a pool.
 
-__*NOTE!*__ Function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used to rescue assets accidentally sent directly to the v2 router contract. 
+__*NOTE!*__ Rescues: <br>
+- For v2 the function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used to rescue assets accidentally sent directly to the v2 router contract. 
 If user has sent token XYZ to the router contract, just add liquidity (or create a new pair if needed) to the XYZ/”native chain token” pair and after that remove the liquidity with the “remove liquidtyEthSupportingFeeOnTransferTokens” function. 
-Usually bots will bw too fast to take before you can rescue, but if on some side chain or amount is not too big, there is a chance to save users asset.
-
-An example contract for rescuing a token: https://github.com/0xMaka/vybes/blob/main/rescue.vy
+Usually bots will be too fast to take before you can rescue, but if on some side chain or amount is not too big, there is a chance to save users asset.
+- For Trident there is a dedicated function for this. Again anyone can do it so you not have time, but if you do.
+Under 16. sweep(), input 0 for the payable amount, enter the address of the stuck asset for "token" (zero address if it's eth that is stuck). Enter stuck balance for "amount", and destination EAO for "address" (wallet of user or guardian). Enter 0 for "onBento"
