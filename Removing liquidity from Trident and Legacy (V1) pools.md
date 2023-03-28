@@ -1,8 +1,9 @@
 
-# Removing liquidity through Trident router (example on Arbitrum):
+# Removing liquidity through Trident router:
 
 Before removing the liquidity through the Trident router contract, the users have to approve the Trident router address as a spender for their SLP tokens. As users usually have already done that when trying to remove liquidity through the UI (problems occur with the removing, not with the approval), just check user’s address to be sure the Trident router has been approved. If there is a problem with the approval itself, we have to do the following:
-
+> **_NOTE_** Example on Arbitrum
+> 
 1. Go to the pool address on the block explorer and select “Write contract” ([https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract](https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract))
 
 2. Connect your wallet (Connect to Web3)
@@ -45,7 +46,7 @@ For some tokens with reverting transfer functions, withdrawing to wallet will no
 With Trident, this can be worked around via taking advantage of the way Bento can internally shift token balances, without calling the tokens broken transfer function.
 In this case unwind to the user’s BentoBox balance, then the user may withdraw the token that does not have a broken transfer to their wallet.
 i.e. The token of value be it WETH, USDT, USDC etc.
-> **_NOTE:_** This is preffered, as avoids the potential for any secondary issue with their token blocking the withdrawel in the latter steps. 
+> **_NOTE:_** This is the preffered way, as avoids the potential for any secondary issue with the token to block withdrawl. 
 
  (app.sushi.com→Portfolio→Account. The assets should be shown under “Bento” balance. Click on the asset and select “Withdraw to wallet)
 ![image](https://user-images.githubusercontent.com/12489182/228105013-98845b12-6fc9-431e-a3af-84c22f76610b.png)
@@ -67,7 +68,7 @@ Then just put all the data  - same as on the contract example (without the first
 
 Don’t forget to put user’s address in the “From” field (on the right)
 
-# REMOVING LIQUIDITY FROM LEGACY POOLS THROUGH V2 ROUTER CONTRACT
+# Removing liquidity from legacy pools through v2 router contract
 
 Just as with Trident pools, the users have to approve the SushiswapV2Router address as a spender for their SLP tokens - same procedure as described above.
 
