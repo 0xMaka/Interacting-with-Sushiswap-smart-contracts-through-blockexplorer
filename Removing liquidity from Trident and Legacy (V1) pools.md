@@ -27,9 +27,9 @@ Before removing the liquidity through the Trident router contract, the users hav
 - - \*\*First value is the address of token0m, the second address, of token1. Can find which is token0, and which is token1 via the pool contract with a block explorer (provided the pool contracts are verified). 
 
 For some tokens with reverting transfer functions, withdrawing to wallet will not work.
-With Trident this can be worked around via taking advantage of the way Bentio can internally shift token balances without calling the tokens broken transfer function.
-In this case, unwind to the user’s BentoBox balance, then the user may withdraw the token that does not have a broken transfer, to their wallet.
-I.E. The token of value be it WETH, USDT, USDC etc.
+With Trident, this can be worked around via taking advantage of the way Bento, can internally shift token balances without calling the tokens broken transfer function.
+In this case, unwind to the user’s BentoBox balance, then the user may withdraw the token that does not have a broken transfer to their wallet.
+i.e. The token of value be it WETH, USDT, USDC etc.
 
  (app.sushi.com→Portfolio→Account. The assets should be shown under “Bento” balance. Click on the asset and select “Withdraw to wallet)
 ![image](https://user-images.githubusercontent.com/12489182/228105013-98845b12-6fc9-431e-a3af-84c22f76610b.png)
@@ -78,10 +78,10 @@ With a clone of the Uniswap V2 router, there are different functions for the dif
 ![image](https://user-images.githubusercontent.com/12489182/228182246-21357a0e-f4c4-42e6-b5e6-880ede755298.png)
 
 
-For some tokens with broken liquidity-fee mechanics, it is required to select to withdraw to wETH instead of ETH (if the token is paired with ETH), as this will bypass the call to take fee and allow transfer.
+For some tokens with broken liquidity-fee mechanics, it is required to select withdrawal to wETH instead of ETH (if the token is paired with ETH), as this will bypass the call to take fees and allow transfer.
 Please note that v2 pools will need to call the tokens transfer, so is relatively easy for someone who doesn't understand their contract to perminantly lock their assets in a pool.
 
-*NOTE!* Function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used to rescue assets accidentally sent directly to the v2 router contract. 
+__*NOTE!*__ Function “remove liquidtyEthSupportingFeeOnTransferTokens” can be used to rescue assets accidentally sent directly to the v2 router contract. 
 If user has sent token XYZ to the router contract, just add liquidity (or create a new pair if needed) to the XYZ/”native chain token” pair and after that remove the liquidity with the “remove liquidtyEthSupportingFeeOnTransferTokens” function. 
 Usually bots will bw too fast to take before you can rescue, but if on some side chain or amount is not too big, there is a chance to save users asset.
 
