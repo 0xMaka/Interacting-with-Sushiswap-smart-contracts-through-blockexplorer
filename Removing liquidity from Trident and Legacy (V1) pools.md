@@ -2,8 +2,8 @@
 # Removing liquidity through Trident router:
 
 Before removing the liquidity through the Trident router contract, the users have to approve the Trident router address as a spender for their SLP tokens. As users usually have already done that when trying to remove liquidity through the UI (problems occur with the removing, not with the approval), just check user’s address to be sure the Trident router has been approved. If there is a problem with the approval itself, we have to do the following:
-> **_NOTE_** Example on Arbitrum
-> 
+> **_NOTE_**<br>
+> PLEASE KEEP IN MIND THAT ALL VALUES (AMOUNTS, ADDRESSES, ETC..) ARE JUST FOR EXAMPLE. WHEN INTERACTING WITH THE SMART CONTRACTS USERS SHOULD USE THEIR OWN WALLET ADDRESSES, CORRESPONDING CONTRACT ADDRESSES AND AMOUNT VALUES !!!
 1. Go to the pool address on the block explorer and select “Write contract” ([https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract](https://arbiscan.io/address/0x176542be47040929a34591367f243f83c1ee13de#writeContract))
 
 2. Connect your wallet (Connect to Web3)
