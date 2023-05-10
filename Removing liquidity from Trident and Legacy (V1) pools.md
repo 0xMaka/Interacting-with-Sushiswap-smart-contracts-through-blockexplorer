@@ -28,11 +28,11 @@ Before removing the liquidity through the Trident router contract, the users hav
 
 4. In the first field put 0 (it is always 0)
 
-5. In the next put the address of the pair - *0x176542be47040929a34591367f243f83c1ee13de* 
+5. In the next put the address of the pair - *The example in this case 0x176542be47040929a34591367f243f83c1ee13de* 
 
-6. In the following, put the amount of liquidity - *5246699295914733*
+6. In the following, put the amount of liquidity - *The example in this case 5246699295914733*
 
-7. Then in the data field put the padded destination address and bento toggle - 0x000000000000000000000000d4351aa99ed4ee99b6b100c720f981ddc154bd980000000000000000000000000000000000000000000000000000000000000000 *
+7. Then in the data field put the padded destination address and bento toggle - *The example in this case 0x0000000000000000000000008c14ed4F602ac4d2Be8Ed9c4716307c73e9A83A80000000000000000000000000000000000000000000000000000000000000000 *
 
 8. And in minWithdrawals (tuple[]) put - [["0x61de0041bd4c2951b3274028a86daaacc2260949","2306000000000000"],["0x82af49447d8a07e3bd95bd0d56f35241523fbab1","1191000000000000"]] ** (the addresses of both tokens in that pair and the minimal amounts (in unit256) the user is willing to accept) - min amounts should be at least 0.5% less then the actual amounts.
 
